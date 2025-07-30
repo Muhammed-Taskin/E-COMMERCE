@@ -1,0 +1,23 @@
+!!!1.NOTUM
+**eğer bir htmldeki bir butonu diğerine yönlendirmek istiyorsak.
+**ilgili bölmün href bölmüne:
+**{% url "htmlin ismi" %}şeklinde yazılır.
+**ve sorun çözülür.
+**bu işleme reversing denir.
+
+NOT1:
+Şimdi reversing kısmında eğer app_name urls.pyda belirtilmişse
+**{% url "app_name:htmlin ismi" %}şeklinde yazılır.
+**ve sorun çözülür.
+
+NOT2:
+Eğer spesifik bir ürüne gidilcekse product_id ile gidilmeli
+ki databaseden doğru ürünü çektiğimizden emin olalım.
+
+NOT3:
+Bana kalırsa chatgptye bootstrap html dosyalarını vererek gayet başarılı
+frontend önyüzleri elde ettim. Bana göre frontend bitmiştir.
+Frontend in kod yapısını biraz anlamak düzenlemeyi bilmek yetiyor.
+
+
+

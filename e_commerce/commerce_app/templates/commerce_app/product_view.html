@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ product.product_name }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  {% include 'commerce_app/homepage.html' %}
+
+  <div class="container my-5">
+    <div class="row">
+      <!-- Ürün Görseli -->
+      <div class="col-md-6">
+        <img src="{{ product.image_url }}" alt="{{ product.product_name }}" class="img-fluid rounded shadow-sm">
+      </div>
+
+      <!-- Ürün Bilgileri -->
+      <div class="col-md-6">
+        <h2 class="fw-bold">{{ product.product_name }}</h2>
+        <h4 class="text-success mb-3">{{ product.product_price }} TL</h4>
+        <p class="mb-4">{{ product.description }}</p>
+
+        <!-- Sepete Ekleme -->
+        <form action="{% url 'commerce_app:cart' product.id %}" method="post" class="d-flex align-items-center mb-4">
+          {% csrf_token %}
+          <div class="me-3">
+            <label for="quantity" class="form-label">Adet:</label>
+            <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control" style="width: 80px;">
+          </div>
+          <button type="submit"  class="btn btn-primary btn-lg">Sepete Ekle</button>
+        </form>
+
+        <!-- Diğer Butonlar -->
+        <div class="d-flex gap-3">
+          <a href="#" class="btn btn-outline-secondary">Favorilere Ekle</a>
+          <a href="#" class="btn btn-outline-secondary">Paylaş</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

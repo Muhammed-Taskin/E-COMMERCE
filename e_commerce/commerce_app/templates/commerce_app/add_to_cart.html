@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout · E-Shop</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <style>
+    /* Aksan turuncu */
+    .bg-accent { background-color: #FF6F3C !important; }
+    .text-accent { color: #FF6F3C !important; }
+    .btn-accent {
+      background-color: #FF6F3C;
+      border-color: #FF6F3C;
+      color: #fff;
+    }
+    .btn-accent:hover, .btn-accent:focus {
+      background-color: #e65c2a;
+      border-color: #e65c2a;
+      color: #fff;
+    }
+    .nav-pills .nav-link.active {
+      background-color: #FF6F3C !important;
+    }
+  </style>
+</head>
+<body class="bg-body-tertiary">
+
+  <!-- Custom Header -->
+  <header class="p-3 bg-dark text-white">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="/" class="d-flex flex-column align-items-center text-decoration-none text-white" style="width:70px">
+        <!-- E-Shop Logo -->
+        <svg width="60" height="60" viewBox="0 0 100 100" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#FF6F3C"/>
+          <path d="M30 55 L50 35 L70 55" stroke="#3A3A3A" stroke-width="6"
+                stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="40" y="55" width="20" height="15" fill="#3A3A3A" rx="3"/>
+        </svg>
+        <span style="font-size:14px;font-weight:600;margin-top:6px;user-select:none;">
+          E-Shop
+        </span>
+      </a>
+      <!-- Nav items if needed... -->
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Checkout Form -->
+    <main class="py-5 text-center">
+      <h1 class="h2">Checkout form</h1>
+      <p class="lead">Bilgilerinizi girin ve ödeme adımına geçin.</p>
+    </main>
+
+    <div class="row g-5">
+      <!-- Cart summary -->
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-accent">Your cart</span>
+          <span class="badge bg-accent rounded-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Product name</h6>
+              <small class="text-body-secondary">Brief description</small>
+            </div>
+            <span class="text-body-secondary">$12</span>
+          </li>
+          <!-- ... diğer ürünler ... -->
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>$20</strong>
+          </li>
+        </ul>
+        <form class="card p-2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Promo code">
+            <button type="submit" class="btn btn-accent">Apply</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Billing form -->
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Billing address</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">First name</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" required>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+            <!-- ... diğer adres alanları ... -->
+          </div>
+
+          <hr class="my-4">
+
+          <h4 class="mb-3">Payment</h4>
+          <div class="my-3">
+            <div class="form-check">
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+              <label class="form-check-label" for="credit">Credit card</label>
+            </div>
+            <div class="form-check">
+              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="cc-name" class="form-label">Name on card</label>
+              <input type="text" class="form-control" id="cc-name" placeholder="" required>
+              <div class="invalid-feedback">
+                Name on card is required.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="cc-number" class="form-label">Credit card number</label>
+              <input type="text" class="form-control" id="cc-number" placeholder="" required>
+              <div class="invalid-feedback">
+                Credit card number is required.
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="cc-expiration" class="form-label">Expiration</label>
+              <input type="text" class="form-control" id="cc-expiration" placeholder="MM/YY" required>
+              <div class="invalid-feedback">
+                Expiration date required
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="cc-cvv" class="form-label">CVV</label>
+              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+              <div class="invalid-feedback">
+                Security code required
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+          <button class="w-100 btn btn-accent btn-lg" type="submit">Continue to checkout</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+</body>
+</html>
