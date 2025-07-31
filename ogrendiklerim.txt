@@ -19,5 +19,29 @@ Bana kalırsa chatgptye bootstrap html dosyalarını vererek gayet başarılı
 frontend önyüzleri elde ettim. Bana göre frontend bitmiştir.
 Frontend in kod yapısını biraz anlamak düzenlemeyi bilmek yetiyor.
 
+NOT3:
+Veri tabanına kaydedilen bilgileri  almak için şu yöntemi kullanıyoruz.
 
+if request.method == "POST":
+        e_mail = request.POST.get("e_mail")
+        password = request.POST.get("password")
 
+Ve veriyi doğrulamak için ise :
+ try:
+            user = Users.objects.get(e_mail = e_mail, password = password)
+            request.session["user_id"] = user.id #Kullanıcı id'sini oturumda saklıyoruz.
+            messages.success(request , f"Başarıyla Giriş yaptınız {user.username}")
+            return redirect('commerce_app:homepage') # Giriş başarılıysa anasayfaya yönlendiriyoruz.        
+        except Users.DoesNotExist:
+            messages.error(request, "Kullanıcı adı veya şifre yanlış")
+            return render(request, "comemrce_app/log_in.html")
+    return render(request, "commerce_app/log_in.html")
+
+bunu kullanıyoruz.
+
+Veri tabanına bir veri kaydetmek için ise:
+** Models oluşturulur.
+** models view içine import edilir.
+** models içindeki classtan yararlanılır
+
+class_name.objects.create() yapısı kullanılır.

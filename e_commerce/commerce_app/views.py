@@ -1,16 +1,43 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from commerce_app.models import *
+from django.contrib import messages
 
 # Create your views here.
 def homepage(request):# anasayfa
     return render(request, "commerce_app/homepage.html")
 
 def log_in(request):#giriş yap kısmı
+    if request.method == "POST":
+        e_mail = request.POST.get("e_mail")
+        password = request.POST.get("password")
+        
+        try:
+            user = Users.objects.get(e_mail = e_mail, password = password)
+            request.session["user_id"] = user.id #Kullanıcı id'sini oturumda saklıyoruz.
+            messages.success(request , f"Başarıyla Giriş yaptınız {user.username}")
+            return redirect('commerce_app:homepage') # Giriş başarılıysa anasayfaya yönlendiriyoruz.        
+        except Users.DoesNotExist:
+            messages.error(request, "Kullanıcı adı veya şifre yanlış")
+            return render(request, "comemrce_app/log_in.html")
+    return render(request, "commerce_app/log_in.html")
     return render(request, "commerce_app/log_in.html")
 
-def register(request): # kayıt olma kısmı
+def register(request):# kaydol kısmı
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        e_mail = request.POST.get("e_mail")
+        surname = request.POST.get("surname")
+        
+        if username and password and e_mail and surname :
+            Users.objects.create(
+                username = username,
+                password = password,
+                e_mail = e_mail,
+                surname = surname
+            )
+        return render (request, "commerce_app/log_in.html")
     return render(request, "commerce_app/register.html")
-
 def categories(request): # kategoriler kısmı
     return render(request, "commerce_app/categories.html")
 
